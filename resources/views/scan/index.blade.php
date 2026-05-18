@@ -12,9 +12,8 @@
 <button id="start-scan-btn" type="button">Start Scan</button>
 <button id="stop-scan-btn" type="button">Stop Scan</button>
 
-<form action="{{ route('log') }}" method="POST">
+<form action="{{ route('scan.store') }}" method="POST">
     @csrf
-    <ul id="scan-results"></ul>
     <div id="scan-inputs"></div>
     <button type="submit">Submit</button>
 </form>

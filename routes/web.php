@@ -1,17 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\ScannerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/scan', function () {
-    return view('scan');
-});
-
-Route::post('/log', function (Request $request) {
-    Log::info($request->toArray());
-})->name('log');
+Route::get('/scan', [ScannerController::class, 'index'])->name('scan.index');
+Route::post('/scan', [ScannerController::class, 'store'])->name('scan.store');
