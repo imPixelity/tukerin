@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bottle_types', function (Blueprint $table) {
+        Schema::create('employee_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('barcode')->unique();
-            $table->text('description');
-            $table->integer('points_value');
-            $table->timestamps();
+            $table->foreignUuid('user_id')->constrained();
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bottle_types');
+        Schema::dropIfExists('employee_profiles');
     }
 };
