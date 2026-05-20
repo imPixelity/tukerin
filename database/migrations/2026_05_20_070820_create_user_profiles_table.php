@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignUuid('user_id')->constrained();
-            $table->string('phone');
+            $table->string('phone', 20);
             $table->string('qr_code')->unique();
             $table->unsignedInteger('points_balance')->default(0);
         });

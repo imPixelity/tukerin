@@ -17,9 +17,9 @@ return new class extends Migration
             $table->unsignedInteger('points_used');
             $table->unsignedBigInteger('amount');
             // TODO: method enum 'cash' 'e-wallet'
-            $table->string('method');
-            $table->string('bank_name')->nullable();
-            $table->string('recipient_account')->nullable();
+            $table->string('method', 20);
+            $table->string('bank_name', 100)->nullable();
+            $table->string('recipient_account', 100)->nullable();
             // TODO: status enum 'pending' 'approved' 'rejected', default use 'pending'
             $table->string('status');
             $table->text('rejection_note')->nullable();

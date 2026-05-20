@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('barcode')->unique();
             $table->text('description');
-            $table->integer('points_value');
+            $table->unsignedInteger('points_value');
             $table->timestamps();
         });
     }
