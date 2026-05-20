@@ -14,13 +14,8 @@ class ScannerController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'barcodes' => 'required|array',
-            'barcodes.*' => 'required|integer|min:1',
-        ]);
+        Log::info($request->input('barcodes'));
 
-        Log::info($validated['barcodes']);
-
-        return redirect()->back()->with('success', 'Barcodes submitted successfully');
+        return view('scan.index');
     }
 }

@@ -5,7 +5,6 @@ let controls = null;
 let codeReader = null;
 let lastScanned = null;
 let lastScannedTime = 0;
-let scannerStarting = false;
 
 const barcodeMap = {};
 const SCAN_COOLDOWN = 2000;
@@ -16,20 +15,14 @@ function init() {
     const startButton = document.getElementById("start-scan-btn");
     const stopButton = document.getElementById("stop-scan-btn");
 
-    if (!startButton || !stopButton) {
-        return;
-    }
-
     startButton.addEventListener("click", startScan);
     stopButton.addEventListener("click", stopScan);
 }
 
 async function startScan() {
-    if (scannerStarting || controls) {
+    if (controls) {
         return;
     }
-
-    scannerStarting = true;
 
     try {
         const hints = createScannerHints();
@@ -50,21 +43,8 @@ async function startScan() {
             videoElement,
             handleScanResult
         );
-
-        scannerStarting = false;
     } catch (error) {
         console.error("Failed to start scanner:", error);
-
-        // Cleanup on error
-        if (codeReader) {
-            codeReader = null;
-        }
-        if (controls) {
-            controls.stop();
-            controls = null;
-        }
-
-        scannerStarting = false;
     }
 }
 
