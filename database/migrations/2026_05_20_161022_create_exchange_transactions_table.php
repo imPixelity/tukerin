@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('exchange_transactions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('user_id')->constrained();
-            $table->foreignUUid('employee_id')->constrained('users', 'id');
+            $table->foreignUuid('user_id')->constrained()->restrictOnDelete();
+            $table->foreignUUid('employee_id')->constrained('users', 'id')->restrictOnDelete();
             $table->unsignedInteger('total_points');
             $table->timestamp('transacted_at')->useCurrent();
         });

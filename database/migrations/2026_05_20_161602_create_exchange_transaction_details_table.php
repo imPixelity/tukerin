@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('exchange_transaction_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignUuid('transaction_id')->constrained('exchange_transactions', 'id');
-            $table->foreignId('bottle_type_id')->constrained();
+            $table->foreignUuid('transaction_id')->constrained('exchange_transactions', 'id')->cascadeOnDelete();
+            $table->foreignId('bottle_type_id')->constrained()->restrictOnDelete();
             $table->unsignedInteger('quantity');
             $table->unsignedInteger('points_earned');
         });
