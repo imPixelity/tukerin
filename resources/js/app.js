@@ -1,1 +1,1 @@
-//
+import './scanner.js';
